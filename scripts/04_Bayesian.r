@@ -131,6 +131,6 @@ params[which.max(params$ll),]
 params$prior_a <- dtruncnorm(params$a, a = 0, b = Inf, mean = a_estimates[1], sd = a_sd[1])
 params$prior_s <- dtruncnorm(params$s, a = 0, b = Inf, mean = s_estimates[1], sd = s_sd[1])
 params$prior_sigma <- rexp(params$sigma, rate = 2)
-params$post <- with(params, ll * prior_a * prior_s * prior_sigma)
+params$post <- with(params, exp(ll) * prior_a * prior_s * prior_sigma)
 
 params[which.max(params$post),]
